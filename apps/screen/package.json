@@ -1,0 +1,35 @@
+{
+  "name": "@repo/screen",
+  "version": "0.0.0",
+  "private": true,
+  "scripts": {
+    "dev": "vite --port 3000 --host",
+    "build": "run-p type-check \"build-only {@}\" --",
+    "preview": "vite preview",
+    "build-only": "vite build",
+    "type-check": "vue-tsc --noEmit -p tsconfig.app.json --composite false",
+    "lint": "eslint . --ext .vue,.js,.jsx,.cjs,.mjs,.ts,.tsx,.cts,.mts --fix --ignore-path .gitignore"
+  },
+  "dependencies": {
+    "@vueuse/core": "catalog:",
+    "pinia": "catalog:",
+    "vue": "catalog:",
+    "vue-router": "catalog:",
+    "@repo/ui": "workspace:*"
+  },
+  "devDependencies": {
+    "@rushstack/eslint-patch": "^1.7.2",
+    "@tsconfig/node18": "^18.2.2",
+    "@types/node": "^20.11.24",
+    "@vitejs/plugin-vue": "catalog:",
+    "eslint": "^8.57.0",
+    "eslint-config-custom": "workspace:*",
+    "eslint-plugin-vue": "^9.22.0",
+    "npm-run-all2": "^6.1.2",
+    "tsconfig": "workspace:*",
+    "typescript": "catalog:",
+    "vite": "catalog:",
+    "vue-tsc": "catalog:",
+    "unocss": "catalog:"
+  }
+}
