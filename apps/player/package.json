@@ -1,11 +1,11 @@
 {
-  "name": "@repo/studio",
+  "name": "@repo/player",
   "version": "0.0.0",
   "private": true,
   "type": "module",
   "scripts": {
     "build": "nuxt build",
-    "dev": "nuxt dev --port 3001 --host",
+    "dev": "nuxt dev --port 3002 --host",
     "generate": "nuxt generate",
     "preview": "nuxt preview",
     "postinstall": "nuxt prepare",
