@@ -23,6 +23,6 @@
     "tsconfig": "workspace:*",
     "vue": "catalog:",
     "vue-router": "catalog:",
-    "nuxt-icon": "^0.6.9"
+    "nuxt-icon": "catalog:"
   }
 }
