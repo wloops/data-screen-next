@@ -1,11 +1,20 @@
-<script setup lang="ts">
-const route = useRoute()
-</script>
-
 <template>
-  <div>
-    <h1>Nuxt Routing set up successfully!</h1>
-    <p>Current route: {{ route.path }}</p>
-    <a href="https://nuxt.com/docs/getting-started/routing" target="_blank">Learn more about Nuxt Routing</a>
+  <div class="dashboard-container">
+    <DashboardHeader />
+    <DashboardContent />
   </div>
 </template>
+
+<script setup lang="ts">
+import DashboardHeader from '~/components/dashboard/DashboardHeader.vue'
+import DashboardContent from '~/components/dashboard/DashboardContent.vue'
+</script>
+
+<style scoped>
+.dashboard-container {
+  width: 100vw;
+  height: 100vh;
+  background: #0f1624;
+  color: #fff;
+}
+</style>

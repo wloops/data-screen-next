@@ -22,6 +22,7 @@
     "nuxt": "catalog:",
     "tsconfig": "workspace:*",
     "vue": "catalog:",
-    "vue-router": "catalog:"
+    "vue-router": "catalog:",
+    "nuxt-icon": "^0.6.9"
   }
 }
