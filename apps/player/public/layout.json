@@ -1,0 +1,47 @@
+{
+  "project_name": "X001",
+  "layout": {
+    "direction": "column",
+    "style": {
+      "margin": "10px"
+    },
+    "background": {
+      "color": "",
+      "image": ""
+    }
+  },
+  "fecth": {
+    "base_url": {
+      "http/https": "url",
+      "ws": "url"
+    },
+    "send": [
+      {
+        "desc": "告警信息推送",
+        "mode": "http/https/ws",
+        "params": {
+          "http/https": {},
+          "ws": {}
+        }
+      }
+    ]
+  },
+  "pages": [
+    {
+      "name": "page1",
+      "id": "page_id_1",
+      "tabs": {
+        "icon": "icon1",
+        "color": "#81A4F1"
+      },
+      "fecth": [
+        {
+          "desc": "获取子集（一般用于切换页面监控源）",
+          "hand": "get_chidren",
+          "mode": "http/https/ws",
+          "params": {}
+        }
+      ]
+    }
+  ]
+}
