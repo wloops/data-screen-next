@@ -12,7 +12,10 @@
     "lint": "eslint ."
   },
   "dependencies": {
-    "@repo/ui": "workspace:*"
+    "@repo/ui": "workspace:*",
+    "@vueuse/core": "catalog:",
+    "@vueuse/components": "catalog:",
+    "@vueuse/nuxt": "catalog:"
   },
   "devDependencies": {
     "@nuxt/devtools": "latest",

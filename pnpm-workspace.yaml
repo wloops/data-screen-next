@@ -1,9 +1,13 @@
 packages:
   - 'apps/*'
   - 'packages/*'
+  - '!**/test/**'
+  - '!**/dist/**'
 
 catalog:
-  '@vueuse/core': ^12.2.0
+  '@vueuse/core': ^12.3.0
+  '@vueuse/components': ^12.3.0
+  '@vueuse/nuxt': ^12.3.0
   '@vitejs/plugin-vue': ^5.2.1
   '@rushstack/eslint-patch': ^1.7.2
   '@tsconfig/node18': ^18.2.2

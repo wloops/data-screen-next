@@ -7,6 +7,6 @@
 <style scoped>
 .layout-container {
   min-height: 100vh;
-  background: #0f1624;
+  background: transparent;
 }
 </style>

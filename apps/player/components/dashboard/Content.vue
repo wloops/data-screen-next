@@ -1,10 +1,10 @@
 <template>
-  <main class="dashboard-content" :style="layoutStyle">
-    <template v-for="page in config?.pages" :key="page.id">
-      <section v-show="currentPage === page.id" class="page-container">
+  <main class="dashboard-content">
+    <template v-for="page in layoutConfig?.pages" :key="page.id">
+      <section v-show="currentPage?.id === page.id" class="page-container">
         <div class="grid-container">
           <div v-for="i in 9" :key="i" class="grid-item">
-            <!-- 数据卡片将在这里动态渲染 -->
+            <!-- 卡片内容 -->
           </div>
         </div>
       </section>
@@ -13,59 +13,18 @@
 </template>
 
 <script setup lang="ts">
-import { ref, computed } from 'vue'
+import { computed } from 'vue'
+import { useRoute } from 'vue-router'
+import type { LayoutConfig } from '~/types/layout'
 
-interface Page {
-  id: string
-  name: string
-  have_tabs: boolean
-  tabs: Array<{
-    id: string
-    name: string
-    icon: string
-    color: string
-  }> | null
-}
+const props = defineProps<{
+  layoutConfig: LayoutConfig
+}>()
 
-interface Config {
-  project_name: string
-  layout: {
-    direction: string
-    style: {
-      margin: string
-    }
-    background: {
-      color: string
-      image: string
-    }
-  }
-  pages: Page[]
-}
-
-const config = ref<Config | null>(null)
-const currentPage = ref('')
-
-// 计算布局样式
-const layoutStyle = computed(() => ({
-  margin: config.value?.layout?.style?.margin || '0',
-  flexDirection: (config.value?.layout?.direction || 'column') as 'row' | 'column' | 'row-reverse' | 'column-reverse',
-  background: config.value?.layout?.background?.color || 'transparent',
-  backgroundImage: config.value?.layout?.background?.image ? `url(${config.value.layout.background.image})` : 'none',
-}))
-
-// 使用useFetch加载配置
-const { data, error } = await useFetch<Config>('/layout.json', {
-  key: 'layout-config',
-  transform: (response) => {
-    config.value = response
-    currentPage.value = response.pages[0]?.id
-    return response
-  },
+const route = useRoute()
+const currentPage = computed(() => {
+  return props.layoutConfig?.pages?.find((p) => p.id === route.query.page) || props.layoutConfig?.pages?.[0]
 })
-
-if (error.value) {
-  console.error('Failed to load config:', error.value)
-}
 </script>
 
 <style scoped>
