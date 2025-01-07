@@ -1,15 +1,23 @@
 {
   "project_name": "X001",
   "layout": {
-    "direction": "column",
-    "style": {
-      "margin": "0",
-      "gap": "20px",
-      "padding": "10px"
+    "main": {
+      "direction": "column",
+      "style": {
+        "margin": "0",
+        "gap": "20px",
+        "padding": "10px"
+      },
+      "background": {
+        "color": "",
+        "image": "bg_default.jpg"
+      }
     },
-    "background": {
-      "color": "",
-      "image": "bg_default.jpg"
+    "header": {
+      "background": {
+        "color": "",
+        "image": "head_bg_default.png"
+      }
     }
   },
   "fecth": {

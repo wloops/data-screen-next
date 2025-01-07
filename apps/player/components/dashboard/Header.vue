@@ -1,5 +1,5 @@
 <template>
-  <header class="dashboard-header">
+  <header class="dashboard-header" :style="layoutStyle">
     <!-- 左侧 tabs -->
     <div class="header-left">
       <div v-if="currentPage?.have_tabs" class="header-tabs">
@@ -54,6 +54,12 @@ const emit = defineEmits<{
 const selectedPageId = ref('')
 const currentTab = ref('')
 const currentTime = ref('')
+
+const bg_default_url = '/assets/background/'
+const layoutStyle = computed(() => ({
+  background: props.layoutConfig?.layout?.header?.background?.image ? `url(${bg_default_url}${props.layoutConfig.layout.header.background.image}) no-repeat` : 'none',
+  backgroundSize: '100% 100%',
+}))
 
 const pageItems = props.layoutConfig?.pages?.map((page) => [
   {
@@ -141,13 +147,14 @@ onBeforeUnmount(() => {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 0 20px;
-  height: 60px;
+  padding: 0 30px;
+  height: 80px;
 }
 
 .header-left,
 .header-right {
   flex: 1;
+  margin-top: -30px;
 }
 
 .header-center {
@@ -208,8 +215,9 @@ onBeforeUnmount(() => {
 }
 
 .time {
-  font-size: 16px;
+  font-size: 20px;
   color: #7cb9ff;
+  font-family: electronicFont;
 }
 
 .icons {

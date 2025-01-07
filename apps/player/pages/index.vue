@@ -23,9 +23,9 @@ console.log('currentPage', currentPage.value)
 // 计算布局样式
 const bg_default_url = '/assets/background/'
 const layoutStyle = computed(() => ({
-  margin: layoutConfig.value?.layout?.style?.margin || '0',
-  flexDirection: (layoutConfig.value?.layout?.direction || 'column') as 'row' | 'column' | 'row-reverse' | 'column-reverse',
-  background: layoutConfig.value?.layout?.background?.image ? `url(${bg_default_url}${layoutConfig.value.layout.background.image}) no-repeat top center` : 'none',
+  margin: layoutConfig.value?.layout?.main?.style?.margin || '0',
+  flexDirection: (layoutConfig.value?.layout?.main?.direction || 'column') as 'row' | 'column' | 'row-reverse' | 'column-reverse',
+  background: layoutConfig.value?.layout?.main?.background?.image ? `url(${bg_default_url}${layoutConfig.value.layout.main.background.image}) no-repeat top center` : 'none',
   backgroundSize: '100% 100%',
 }))
 </script>

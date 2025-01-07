@@ -18,15 +18,23 @@ export interface Tab {
 export interface LayoutConfig {
   project_name: string
   layout: {
-    direction: string
-    style: {
-      margin: string
-      gap: string
-      padding: string
+    main: {
+      direction: string
+      style: {
+        margin: string
+        gap: string
+        padding: string
+      }
+      background: {
+        color: string
+        image: string
+      }
     }
-    background: {
-      color: string
-      image: string
+    header: {
+      background: {
+        color: string
+        image: string
+      }
     }
   }
   pages: Page[]
