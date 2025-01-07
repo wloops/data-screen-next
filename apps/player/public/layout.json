@@ -46,6 +46,11 @@
       "name": "page2",
       "id": "page_id_2",
       "have_tabs": false
+    },
+    {
+      "name": "page3",
+      "id": "page_id_3",
+      "have_tabs": false
     }
   ]
 }

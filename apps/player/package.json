@@ -13,8 +13,9 @@
   },
   "dependencies": {
     "@repo/ui": "workspace:*",
-    "@vueuse/core": "catalog:",
+    "@nuxt/ui": "catalog:",
     "@vueuse/components": "catalog:",
+    "@vueuse/core": "catalog:",
     "@vueuse/nuxt": "catalog:"
   },
   "devDependencies": {
@@ -23,9 +24,9 @@
     "eslint": "catalog:",
     "eslint-config-custom": "workspace:*",
     "nuxt": "catalog:",
+    "nuxt-icon": "catalog:",
     "tsconfig": "workspace:*",
     "vue": "catalog:",
-    "vue-router": "catalog:",
-    "nuxt-icon": "catalog:"
+    "vue-router": "catalog:"
   }
 }

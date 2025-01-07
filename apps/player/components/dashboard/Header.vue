@@ -11,17 +11,37 @@
 
     <!-- 中间标题 -->
     <div class="header-center">
-      <div class="title-select" @click="showPageSelect = !showPageSelect">
-        <h1 class="title">{{ currentPage?.name || '告警信息' }}</h1>
-        <Icon name="mdi:chevron-down" class="select-icon" :class="{ 'rotate-180': showPageSelect }" />
-
-        <!-- 下拉菜单 -->
-        <div v-if="showPageSelect" class="page-select-dropdown" v-on-click-outside="closePageSelect">
-          <div v-for="page in layoutConfig?.pages" :key="page.id" class="page-option" :class="{ active: currentPage?.id === page.id }" @click="handlePageChange(page.id)">
-            {{ page.name }}
-          </div>
-        </div>
-      </div>
+      <UDropdown
+        :items="pageItems"
+        v-model="selectedPageId"
+        :ui="{
+          container: 'relative',
+          trigger: 'bg-transparent hover:bg-transparent',
+          base: 'min-w-[200px]',
+          width: 'w-auto',
+          background: 'bg-dark-bg',
+          border: 'border border-dark-border',
+          ring: '',
+          rounded: 'rounded',
+          shadow: '',
+          padding: 'p-0',
+          item: {
+            base: 'text-primary-300 hover:bg-dark-hover cursor-pointer',
+            active: 'bg-dark-active',
+            selected: 'bg-dark-active',
+            padding: 'px-4 py-2',
+          },
+        }"
+      >
+        <UButton variant="ghost" color="gray" class="title-select">
+          <template #leading>
+            <h1 class="title">{{ currentPage?.name || '告警信息' }}</h1>
+          </template>
+          <template #trailing>
+            <Icon name="mdi:chevron-down" class="select-icon" />
+          </template>
+        </UButton>
+      </UDropdown>
     </div>
 
     <!-- 右侧时间和操作 -->
@@ -38,37 +58,49 @@
 </template>
 
 <script setup lang="ts">
-import { ref, computed } from 'vue'
-import { useRoute, useRouter } from 'vue-router'
+import { ref, computed, watch } from 'vue'
 import { vOnClickOutside } from '@vueuse/components'
 import type { Page, Tab, LayoutConfig } from '~/types/layout'
 
 const props = defineProps<{
   layoutConfig: LayoutConfig
+  currentPage?: Page
 }>()
 
-const route = useRoute()
-const router = useRouter()
+const selectedPageId = ref('')
 const currentTab = ref('')
 const currentTime = ref('')
-const showPageSelect = ref(false)
+
+const pageItems = props.layoutConfig?.pages?.map((page) => [
+  {
+    label: page.name,
+    // value: page.id,
+    click: () => {
+      console.log('click', page.id)
+      handlePageChange(page.id)
+    },
+  },
+])
 
 // 简化的模拟数据
-const mockTabs = [
+const mockTabs: Tab[] = [
   { id: 'device1', name: '设备A' },
   { id: 'device2', name: '设备B' },
   { id: 'device3', name: '设备C' },
 ]
 
-const currentPage = computed(() => {
-  const page = props.layoutConfig?.pages?.find((p) => p.id === route.query.page) || props.layoutConfig?.pages?.[0]
-  if (page?.have_tabs) {
-    return { ...page, tabs: mockTabs }
-  }
-  return page
-})
+watch(
+  () => props.currentPage,
+  (newPage) => {
+    if (newPage && newPage?.have_tabs) {
+      newPage.tabs = mockTabs
+    }
+  },
+  { immediate: true }
+)
 
-console.log('currentPage', currentPage.value)
+console.log('layoutConfig', props.layoutConfig)
+console.log('currentPage', props.currentPage)
 
 const updateTime = () => {
   const now = new Date()
@@ -87,23 +119,27 @@ const updateTime = () => {
 
 const handleTabClick = (tabId: string) => {
   currentTab.value = tabId
-  if (currentPage.value?.fecth) {
+  if (props.currentPage?.fecth) {
     // 触发数据获取
   }
 }
 
-const closePageSelect = () => {
-  showPageSelect.value = false
-}
+const emit = defineEmits<{
+  'update:newPage': [Page | undefined]
+}>()
 
 const handlePageChange = (pageId: string) => {
-  console.log('handlePageChange', pageId)
-  router.push({
-    path: route.path,
-    query: { ...route.query, page: pageId },
-  })
-  showPageSelect.value = false
+  selectedPageId.value = pageId
+  // 找到对应的页面数据
+  const newPage = props.layoutConfig?.pages?.find((p) => p.id === pageId)
+  console.log('handlePageChange', pageId, newPage)
+  emit('update:newPage', newPage)
 }
+
+// 在 currentPage computed 变化时也发射
+// watch(props.currentPage, (newPage) => {
+//   emit('update:currentPage', newPage)
+// })
 
 // 使用 NodeJS.Timeout 替代 Timer
 let timer: ReturnType<typeof setInterval>
@@ -205,12 +241,12 @@ onBeforeUnmount(() => {
 }
 
 .title-select {
-  position: relative;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 8px;
-  cursor: pointer;
+  background: transparent;
+  border: none;
+}
+
+.title-select:hover {
+  background: rgba(255, 255, 255, 0.1);
 }
 
 .select-icon {

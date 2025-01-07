@@ -1,16 +1,24 @@
 <template>
   <div class="dashboard-container" :style="layoutStyle">
-    <DashboardHeader :layout-config="layoutConfig" />
-    <DashboardContent :layout-config="layoutConfig" />
+    <DashboardHeader :layout-config="layoutConfig" :current-page="currentPage" v-model:newPage="currentPage" />
+    <DashboardContent :layout-config="layoutConfig" :current-page="currentPage" />
   </div>
 </template>
 
 <script setup lang="ts">
 import DashboardHeader from '~/components/dashboard/Header.vue'
 import DashboardContent from '~/components/dashboard/Content.vue'
-import { computed } from 'vue'
+import { computed, ref, watch } from 'vue'
+import type { Page } from '~/types/layout'
 
 const { data: layoutConfig } = await useFetch<any>('/layout.json')
+
+// 添加 currentPage 状态
+const currentPage = ref<Page>()
+
+// 在数据加载后设置默认页面
+currentPage.value = layoutConfig.value?.pages?.[0]
+console.log('currentPage', currentPage.value)
 
 // 计算布局样式
 const bg_default_url = '/assets/background/'
@@ -28,31 +36,11 @@ const layoutStyle = computed(() => ({
   height: 100vh;
   /* background: #0f1624; */
   color: #fff;
-  position: relative;
   overflow: hidden;
   display: flex;
   flex-direction: column;
-  padding: 0;
-  margin: 0;
-}
-
-.dashboard-container::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
   background: url('/assets/background/bg_default.jpg') no-repeat top center;
   background-size: 100% 100%;
-  opacity: 1;
-  z-index: 0;
-}
-
-/* 确保内容在背景之上 */
-:deep(*) {
-  position: relative;
-  z-index: 1;
 }
 
 /* 移除可能的默认边距 */

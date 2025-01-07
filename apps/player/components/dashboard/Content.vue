@@ -5,6 +5,7 @@
         <div class="grid-container">
           <div v-for="i in 9" :key="i" class="grid-item">
             <!-- 卡片内容 -->
+            {{ currentPage?.id }}
           </div>
         </div>
       </section>
@@ -13,18 +14,14 @@
 </template>
 
 <script setup lang="ts">
-import { computed } from 'vue'
-import { useRoute } from 'vue-router'
-import type { LayoutConfig } from '~/types/layout'
+import type { LayoutConfig, Page } from '~/types/layout'
 
 const props = defineProps<{
   layoutConfig: LayoutConfig
+  currentPage?: Page
 }>()
 
-const route = useRoute()
-const currentPage = computed(() => {
-  return props.layoutConfig?.pages?.find((p) => p.id === route.query.page) || props.layoutConfig?.pages?.[0]
-})
+console.log('Content.vue currentPage', props.currentPage)
 </script>
 
 <style scoped>
