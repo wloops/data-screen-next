@@ -2,6 +2,12 @@
   <header class="dashboard-header" :style="layoutStyle">
     <!-- 左侧 tabs -->
     <div class="header-left">
+      <div class="alarm">
+        <div class="alarm-icon-wrapper">
+          <Icon name="solar:lightbulb-minimalistic-bold-duotone" class="alarm-icon" />
+          <span class="alarm-text" v-if="!currentPage?.have_tabs">告警信息</span>
+        </div>
+      </div>
       <div v-if="currentPage?.have_tabs" class="header-tabs">
         <div v-for="tab in currentPage.tabs" :key="tab.id" :class="['tab-item', { active: currentTab === tab.id }]" @click="handleTabClick(tab.id)">
           <span>{{ tab.name }}</span>
@@ -155,6 +161,23 @@ onBeforeUnmount(() => {
 .header-right {
   flex: 1;
   margin-top: -30px;
+  display: flex;
+  align-items: center;
+}
+.header-left {
+  justify-content: flex-start;
+  .alarm {
+    margin-left: 10px;
+    margin-right: 20px;
+    .alarm-icon-wrapper {
+      display: flex;
+      align-items: center;
+      gap: 5px;
+    }
+  }
+}
+.header-right {
+  justify-content: flex-end;
 }
 
 .header-center {

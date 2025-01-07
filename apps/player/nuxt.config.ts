@@ -3,7 +3,7 @@ export default defineNuxtConfig({
   devtools: { enabled: true },
   ssr: false,
   css: ['@/assets/css/main.css'],
-  modules: ['nuxt-icon', '@vueuse/nuxt', '@nuxt/ui','@unocss/nuxt'],
+  modules: ['nuxt-icon', '@vueuse/nuxt', '@nuxt/ui'],
   app: {
     layoutTransition: { name: 'layout', mode: 'out-in' }
   },

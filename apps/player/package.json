@@ -21,13 +21,11 @@
   "devDependencies": {
     "@nuxt/devtools": "latest",
     "@nuxtjs/eslint-config-typescript": "catalog:",
-    "@unocss/nuxt": "catalog:",
     "eslint": "catalog:",
     "eslint-config-custom": "workspace:*",
     "nuxt": "catalog:",
     "nuxt-icon": "catalog:",
     "tsconfig": "workspace:*",
-    "unocss": "catalog:",
     "vue": "catalog:",
     "vue-router": "catalog:"
   }
