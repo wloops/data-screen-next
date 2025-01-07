@@ -3,12 +3,12 @@ export default defineNuxtConfig({
   devtools: { enabled: true },
   ssr: false,
   css: ['@/assets/css/main.css'],
-  modules: ['nuxt-icon', '@vueuse/nuxt', '@nuxt/ui'],
+  modules: ['nuxt-icon', '@vueuse/nuxt', '@nuxt/ui','@unocss/nuxt'],
   app: {
     layoutTransition: { name: 'layout', mode: 'out-in' }
   },
   ui: {
-    global: true
+    global: true,
   },
   colorMode: {
     preference: 'dark',

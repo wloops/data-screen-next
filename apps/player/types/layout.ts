@@ -2,6 +2,10 @@ export interface Page {
   name: string
   id: string
   have_tabs?: boolean
+  style?: {
+    icon?: string
+    color?: string
+  }
   tabs?: Tab[]
   fecth?: any[]
 }

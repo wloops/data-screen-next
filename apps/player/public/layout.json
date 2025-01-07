@@ -30,9 +30,13 @@
   },
   "pages": [
     {
-      "name": "page1",
+      "name": "业务运行态势",
       "id": "page_id_1",
       "have_tabs": true,
+      "style": {
+        "icon": "solar:share-circle-bold",
+        "color": "#81A4F1"
+      },
       "fecth": [
         {
           "desc": "获取子集",
@@ -43,14 +47,32 @@
       ]
     },
     {
-      "name": "page2",
+      "name": "设备状态监控",
       "id": "page_id_2",
-      "have_tabs": false
+      "have_tabs": false,
+      "style": {
+        "icon": "solar:translation-bold",
+        "color": "#81A4F1"
+      }
     },
     {
-      "name": "page3",
+      "name": "设备运行态势",
       "id": "page_id_3",
-      "have_tabs": false
+      "have_tabs": false,
+      "style": {
+        "icon": "solar:server-square-cloud-bold",
+        "color": "#81A4F1"
+      }
+    },
+    {
+      "name": "平台数据监控",
+      "id": "page_id_4",
+      "have_tabs": false,
+      "style": {
+        "icon": "solar:chart-2-bold-duotone",
+        "color": "#81A4F1"
+      }
     }
   ]
 }
+

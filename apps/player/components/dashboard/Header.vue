@@ -11,34 +11,14 @@
 
     <!-- 中间标题 -->
     <div class="header-center">
-      <UDropdown
-        :items="pageItems"
-        v-model="selectedPageId"
-        :ui="{
-          container: 'relative',
-          trigger: 'bg-transparent hover:bg-transparent',
-          base: 'min-w-[200px]',
-          width: 'w-auto',
-          background: 'bg-dark-bg',
-          border: 'border border-dark-border',
-          ring: '',
-          rounded: 'rounded',
-          shadow: '',
-          padding: 'p-0',
-          item: {
-            base: 'text-primary-300 hover:bg-dark-hover cursor-pointer',
-            active: 'bg-dark-active',
-            selected: 'bg-dark-active',
-            padding: 'px-4 py-2',
-          },
-        }"
-      >
+      <UDropdown :popper="{ placement: 'bottom' }" :items="pageItems" v-model="selectedPageId">
         <UButton variant="ghost" color="gray" class="title-select">
           <template #leading>
-            <h1 class="title">{{ currentPage?.name || '告警信息' }}</h1>
+            <Icon :name="currentPage?.style?.icon || 'mdi:monitor'" class="title-icon" />
+            <h1 class="title">{{ currentPage?.name || '监控页面' }}</h1>
           </template>
           <template #trailing>
-            <Icon name="mdi:chevron-down" class="select-icon" />
+            <Icon name="solar:double-alt-arrow-down-line-duotone" class="select-icon" />
           </template>
         </UButton>
       </UDropdown>
@@ -49,8 +29,8 @@
       <div class="time-wrapper">
         <span class="time">{{ currentTime }}</span>
         <div class="icons">
-          <Icon name="mdi:refresh" class="icon" />
-          <Icon name="mdi:fullscreen" class="icon" />
+          <Icon name="solar:refresh-square-broken" class="icon" />
+          <Icon name="solar:maximize-square-minimalistic-outline" class="icon" />
         </div>
       </div>
     </div>
@@ -67,6 +47,10 @@ const props = defineProps<{
   currentPage?: Page
 }>()
 
+const emit = defineEmits<{
+  'update:newPage': [Page | undefined]
+}>()
+
 const selectedPageId = ref('')
 const currentTab = ref('')
 const currentTime = ref('')
@@ -74,6 +58,7 @@ const currentTime = ref('')
 const pageItems = props.layoutConfig?.pages?.map((page) => [
   {
     label: page.name,
+    icon: page?.style?.icon,
     // value: page.id,
     click: () => {
       console.log('click', page.id)
@@ -81,6 +66,13 @@ const pageItems = props.layoutConfig?.pages?.map((page) => [
     },
   },
 ])
+
+const handlePageChange = (pageId: string) => {
+  selectedPageId.value = pageId
+  // 找到对应的页面数据
+  const newPage = props.layoutConfig?.pages?.find((p) => p.id === pageId)
+  emit('update:newPage', newPage)
+}
 
 // 简化的模拟数据
 const mockTabs: Tab[] = [
@@ -124,18 +116,6 @@ const handleTabClick = (tabId: string) => {
   }
 }
 
-const emit = defineEmits<{
-  'update:newPage': [Page | undefined]
-}>()
-
-const handlePageChange = (pageId: string) => {
-  selectedPageId.value = pageId
-  // 找到对应的页面数据
-  const newPage = props.layoutConfig?.pages?.find((p) => p.id === pageId)
-  console.log('handlePageChange', pageId, newPage)
-  emit('update:newPage', newPage)
-}
-
 // 在 currentPage computed 变化时也发射
 // watch(props.currentPage, (newPage) => {
 //   emit('update:currentPage', newPage)
@@ -176,11 +156,20 @@ onBeforeUnmount(() => {
 }
 
 .title {
+  height: 30px;
+  line-height: 30px;
   font-size: 24px;
   font-weight: bold;
   background: linear-gradient(to bottom, #fff, #7cb9ff);
-  -webkit-background-clip: text;
+  background-clip: text;
   color: transparent;
+}
+
+.title-icon {
+  width: 25px;
+  height: 25px;
+  margin-right: 1px;
+  background: linear-gradient(to bottom, #fff, #7cb9ff);
 }
 
 .header-tabs {
@@ -251,8 +240,8 @@ onBeforeUnmount(() => {
 
 .select-icon {
   color: #7cb9ff;
-  width: 20px;
-  height: 20px;
+  width: 18px;
+  height: 18px;
   transition: transform 0.2s;
 }
 

@@ -12,8 +12,8 @@
     "lint": "eslint ."
   },
   "dependencies": {
-    "@repo/ui": "workspace:*",
     "@nuxt/ui": "catalog:",
+    "@repo/ui": "workspace:*",
     "@vueuse/components": "catalog:",
     "@vueuse/core": "catalog:",
     "@vueuse/nuxt": "catalog:"
@@ -21,11 +21,13 @@
   "devDependencies": {
     "@nuxt/devtools": "latest",
     "@nuxtjs/eslint-config-typescript": "catalog:",
+    "@unocss/nuxt": "catalog:",
     "eslint": "catalog:",
     "eslint-config-custom": "workspace:*",
     "nuxt": "catalog:",
     "nuxt-icon": "catalog:",
     "tsconfig": "workspace:*",
+    "unocss": "catalog:",
     "vue": "catalog:",
     "vue-router": "catalog:"
   }
