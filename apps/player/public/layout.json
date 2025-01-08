@@ -29,7 +29,7 @@
       {
         "remark": "告警信息推送",
         "mode": "ws",
-        "in": "header",
+        "in": "header-left",
         "params": {
           "init_ID": "header_alarm_info",
           "groupId": "ALARM",

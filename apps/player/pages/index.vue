@@ -6,7 +6,7 @@
 </template>
 
 <script setup lang="ts">
-import DashboardHeader from '~/components/dashboard/Header.vue'
+import DashboardHeader from '~/components/dashboard/Header/index.vue'
 import DashboardContent from '~/components/dashboard/Content.vue'
 import { computed, ref, watch } from 'vue'
 import type { Page } from '~/types/layout'
