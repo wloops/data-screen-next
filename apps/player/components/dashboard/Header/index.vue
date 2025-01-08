@@ -1,6 +1,6 @@
 <template>
   <header class="dashboard-header" :style="layoutStyle">
-    <HeaderLeft class="header-left" :currentPage="currentPage" :layoutConfig="layoutConfig" :fetch="header_fetch.left" />
+    <HeaderLeft class="header-left" :currentPage="currentNewPage" :layoutConfig="layoutConfig" :fetch="header_fetch.left" />
 
     <HeaderCenter class="header-center" :selectedPageId="selectedPageId" :currentPage="currentPage" :layoutConfig="layoutConfig" :fetch="header_fetch.center" :handlePageChange="handlePageChange" />
 
@@ -9,6 +9,8 @@
 </template>
 
 <script setup lang="ts">
+import { ref, computed, watch } from 'vue'
+import { useWebSocket } from '@vueuse/core'
 import type { Page, Tab, LayoutConfig } from '~/types/layout'
 
 import HeaderLeft from './HeaderLeft.vue'
@@ -60,18 +62,39 @@ const mockTabs: Tab[] = [
   { id: 'device3', name: '设备C' },
 ]
 
+const base_url_ws = props.layoutConfig?.fecth?.base_url?.ws
+const currentNewPage = ref<Page | undefined>(props.currentPage)
+const getCurrentPageChildren = async (page: Page) => {
+  const fecths = page.fecth
+  if (fecths && fecths.length > 0) {
+    fecths.forEach((item: any) => {
+      console.log('item', item)
+      if (item.hand === 'get_children' && item.mode === 'ws') {
+        const { data, status, send, close } = useWebSocket(base_url_ws, {
+          autoReconnect: true,
+          onMessage: (ws, event) => {
+            const msg = JSON.parse(event.data)
+            console.log('getCurrentPageChildren收到消息:', msg.data)
+            currentNewPage.value = { ...page, tabs: msg.data }
+          },
+        })
+        send(JSON.stringify(item.params))
+      }
+    })
+  }
+}
 watch(
   () => props.currentPage,
-  (newPage) => {
+  async (newPage) => {
+    console.log('currentPage-newPage', newPage)
     if (newPage && newPage?.have_tabs) {
-      newPage.tabs = mockTabs
+      getCurrentPageChildren(newPage)
     }
   },
   { immediate: true }
 )
 
 console.log('layoutConfig', props.layoutConfig)
-console.log('currentPage', props.currentPage)
 
 // const handleTabClick = (tabId: string) => {
 //   currentTab.value = tabId

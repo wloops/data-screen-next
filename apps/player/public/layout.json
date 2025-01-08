@@ -42,7 +42,7 @@
     {
       "name": "业务运行态势",
       "id": "page_id_1",
-      "have_tabs": true,
+      "have_tabs": false,
       "style": {
         "icon": "solar:share-circle-bold",
         "color": "#81A4F1"
@@ -51,7 +51,7 @@
     {
       "name": "设备状态监控",
       "id": "page_id_2",
-      "have_tabs": false,
+      "have_tabs": true,
       "style": {
         "icon": "solar:translation-bold",
         "color": "#81A4F1"
@@ -81,11 +81,23 @@
     {
       "name": "平台数据监控",
       "id": "page_id_4",
-      "have_tabs": false,
+      "have_tabs": true,
       "style": {
         "icon": "solar:chart-2-bold-duotone",
         "color": "#81A4F1"
-      }
+      },
+      "fecth": [
+        {
+          "remark": "获取子集",
+          "hand": "get_children",
+          "mode": "ws",
+          "params": {
+            "init_ID": "page_platform_children",
+            "groupId": "NODE",
+            "itemId": "11"
+          }
+        }
+      ]
     }
   ]
 }
