@@ -29,7 +29,6 @@
     "tsconfig": "workspace:*",
     "typescript": "catalog:",
     "vite": "catalog:",
-    "vue-tsc": "catalog:",
-    "unocss": "catalog:"
+    "vue-tsc": "catalog:"
   }
 }

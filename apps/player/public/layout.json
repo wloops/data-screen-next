@@ -22,16 +22,18 @@
   },
   "fecth": {
     "base_url": {
-      "http/https": "url",
-      "ws": "url"
+      "http/https": "",
+      "ws": "ws://work.paytunnel.cn:18800/websocket/channel"
     },
     "send": [
       {
-        "desc": "告警信息推送",
-        "mode": "http/https/ws",
+        "remark": "告警信息推送",
+        "mode": "ws",
+        "in": "header",
         "params": {
-          "http/https": {},
-          "ws": {}
+          "init_ID": "header_alarm_info",
+          "groupId": "ALARM",
+          "itemId": "SystemCurrentAlarmDetail"
         }
       }
     ]
@@ -44,15 +46,7 @@
       "style": {
         "icon": "solar:share-circle-bold",
         "color": "#81A4F1"
-      },
-      "fecth": [
-        {
-          "desc": "获取子集",
-          "hand": "get_children",
-          "mode": "http/https/ws",
-          "params": {}
-        }
-      ]
+      }
     },
     {
       "name": "设备状态监控",
@@ -61,7 +55,19 @@
       "style": {
         "icon": "solar:translation-bold",
         "color": "#81A4F1"
-      }
+      },
+       "fecth": [
+        {
+          "remark": "获取子集",
+          "hand": "get_children",
+          "mode": "ws",
+          "params": {
+            "init_ID": "page_device_children",
+            "groupId": "NODE",
+            "itemId": "21"
+          }
+        }
+      ]
     },
     {
       "name": "设备运行态势",
