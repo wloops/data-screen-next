@@ -7,10 +7,6 @@ const props = defineProps<{
   handlePageChange: (pageId: string) => void
 }>()
 
-const emit = defineEmits<{
-  'update:newPage': [Page | undefined]
-}>()
-
 const pageItems = props.layoutConfig?.pages?.map((page) => [
   {
     label: page.name,

@@ -87,6 +87,7 @@ watch(
   () => props.currentPage,
   async (newPage) => {
     console.log('currentPage-newPage', newPage)
+    currentNewPage.value = newPage
     if (newPage && newPage?.have_tabs) {
       getCurrentPageChildren(newPage)
     }
