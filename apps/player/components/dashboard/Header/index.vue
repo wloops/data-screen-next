@@ -122,7 +122,7 @@ console.log('layoutConfig', props.layoutConfig)
 .header-left,
 .header-right {
   flex: 1;
-  margin-top: -30px;
+  margin-top: -25px;
   display: flex;
   align-items: center;
 }
