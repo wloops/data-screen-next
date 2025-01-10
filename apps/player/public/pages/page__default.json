@@ -1,0 +1,62 @@
+[
+    {
+        "name": "column-1",
+        "direction": "column",
+        "flexRatio": 1,
+        "innerBoxs": [
+            {
+                "id": "block-id-0e274772-e68e-419a-9aa4-e9cc41a563cc",
+                "name": "第1列区块1",
+                "flexRatio": 1,
+                "direction": "column",
+                "children": [
+                    {
+                        "id": "block-child-id-9f9d7adb-2851-4aea-bab7-f5ae0813ad8c",
+                        "fatherID": "block-id-0e274772-e68e-419a-9aa4-e9cc41a563cc",
+                        "flexRatio": 1
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "name": "column-2",
+        "direction": "column",
+        "flexRatio": 1,
+        "innerBoxs": [
+            {
+                "id": "block-id-9132d8ff-5053-4b8d-a961-ba0fc22c68e6",
+                "name": "第2列区块1",
+                "flexRatio": 1,
+                "direction": "column",
+                "children": [
+                    {
+                        "id": "block-child-id-04ef6a55-07da-4927-839d-70b5744ddd84",
+                        "fatherID": "block-id-9132d8ff-5053-4b8d-a961-ba0fc22c68e6",
+                        "flexRatio": 1
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "name": "column-3",
+        "direction": "column",
+        "flexRatio": 1,
+        "innerBoxs": [
+            {
+                "id": "block-id-9d266dc8-3925-41a7-888e-a858ab57335d",
+                "name": "第3列区块1",
+                "flexRatio": 1,
+                "direction": "column",
+                "children": [
+                    {
+                        "id": "block-child-id-d6831674-72c6-446f-9d7d-2a5ca16777b3",
+                        "fatherID": "block-id-9d266dc8-3925-41a7-888e-a858ab57335d",
+                        "flexRatio": 1
+                    }
+                ]
+            }
+        ]
+    }
+]
