@@ -11,7 +11,7 @@
 <script setup lang="ts">
 import { ref, computed, watch } from 'vue'
 import { useWebSocket } from '@vueuse/core'
-import type { Page, Tab, LayoutConfig } from '../../types/layout'
+import type { Page, Tab, LayoutConfig } from '../../../types/layout'
 
 import HeaderLeft from './HeaderLeft.vue'
 import HeaderRight from './HeaderRight.vue'
@@ -27,6 +27,7 @@ const emit = defineEmits<{
 }>()
 
 const selectedPageId = ref('')
+selectedPageId.value = props.currentPage?.name || ''
 const handlePageChange = (pageId: string) => {
   selectedPageId.value = pageId
   // 找到对应的页面数据

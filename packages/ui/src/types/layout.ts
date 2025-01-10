@@ -1,6 +1,7 @@
 export interface Page {
   name: string
   id: string
+  layoutModel: string
   have_tabs?: boolean
   style?: {
     icon?: string

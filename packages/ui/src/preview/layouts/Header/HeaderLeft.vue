@@ -3,7 +3,7 @@ import { ref, watch } from 'vue'
 import { useWebSocket, useDateFormat } from '@vueuse/core'
 import { useArrayStructure } from '../hooks/useArrayStructure'
 
-import type { Page, LayoutConfig } from '../../types/layout'
+import type { Page, LayoutConfig } from '../../../types/layout'
 
 const props = defineProps<{
   layoutConfig: LayoutConfig
@@ -137,9 +137,9 @@ const handleTabChange = (tab: any) => {
       <div v-if="currentPage?.have_tabs" class="header-tabs">
         <UPopover mode="click">
           <div class="tab-item">
-            <Icon name="solar:link-circle-broken" class="text-xl mr-1" />
+            <Icon name="solar:link-circle-broken" class="text-xl mr-2" />
             <div>{{ currentTab }}</div>
-            <Icon name="solar:alt-arrow-down-bold-duotone" class="text-xl mr-1" />
+            <Icon name="solar:alt-arrow-down-bold-duotone" class="text-xl ml-2" />
           </div>
 
           <template #panel>

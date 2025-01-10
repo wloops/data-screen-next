@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import type { LayoutConfig, Page } from '../../types/layout'
+import type { LayoutConfig, Page } from '../../../types/layout'
 const props = defineProps<{
   layoutConfig: LayoutConfig
   currentPage?: Page
@@ -12,6 +12,7 @@ const pageItems = props.layoutConfig?.pages?.map((page) => [
     label: page.name,
     icon: page?.style?.icon,
     // value: page.id,
+    active: page.id === props.selectedPageId,
     click: () => {
       console.log('click', page.id)
       props.handlePageChange(page.id)
