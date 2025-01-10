@@ -11,7 +11,7 @@
 <script setup lang="ts">
 import { ref, computed, watch } from 'vue'
 import { useWebSocket } from '@vueuse/core'
-import type { Page, Tab, LayoutConfig } from '~/types/layout'
+import type { Page, Tab, LayoutConfig } from '../../types/layout'
 
 import HeaderLeft from './HeaderLeft.vue'
 import HeaderRight from './HeaderRight.vue'

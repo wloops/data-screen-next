@@ -1,8 +1,9 @@
 <script setup lang="ts">
+import { ref, watch } from 'vue'
 import { useWebSocket, useDateFormat } from '@vueuse/core'
 import { useArrayStructure } from '../hooks/useArrayStructure'
 
-import type { Page, LayoutConfig } from '~/types/layout'
+import type { Page, LayoutConfig } from '../../types/layout'
 
 const props = defineProps<{
   layoutConfig: LayoutConfig
@@ -125,7 +126,7 @@ const handleTabChange = (tab: any) => {
             </div>
             <template #item="{ item }">
               <div class="flex items-center gap-2 flex-1">
-                <UIcon :name="item.icon" class="w-6 h-6" />
+                <Icon :name="item.icon" class="w-6 h-6" />
                 <span class="truncate">{{ item.label }}</span>
               </div>
               <span class="text-sm text-gray-500 shrink-0">{{ item.time }}</span>

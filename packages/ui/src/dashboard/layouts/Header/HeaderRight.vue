@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { ref, onMounted, onBeforeUnmount } from 'vue'
-import type { Page, LayoutConfig } from '~/types/layout'
+import type { Page, LayoutConfig } from '../../types/layout'
 
 const props = defineProps<{
   currentPage?: Page

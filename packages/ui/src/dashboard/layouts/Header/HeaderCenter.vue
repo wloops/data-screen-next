@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import type { LayoutConfig, Page } from '~/types/layout'
+import type { LayoutConfig, Page } from '../../types/layout'
 const props = defineProps<{
   layoutConfig: LayoutConfig
   currentPage?: Page

@@ -1,13 +1,12 @@
 <template>
   <div class="dashboard-container" :style="layoutStyle">
-    <DashboardHeader :layout-config="layoutConfig" :current-page="currentPage" v-model:newPage="currentPage" />
-    <DashboardContent :layout-config="layoutConfig" :current-page="currentPage" />
+    <Header :layout-config="layoutConfig" :current-page="currentPage" v-model:newPage="currentPage" />
+    <Content :layout-config="layoutConfig" :current-page="currentPage" />
   </div>
 </template>
 
 <script setup lang="ts">
-import DashboardHeader from '~/components/dashboard/Header/index.vue'
-import DashboardContent from '~/components/dashboard/Content.vue'
+import { Header, Content } from '@repo/ui'
 import { computed, ref, watch } from 'vue'
 import type { Page } from '~/types/layout'
 

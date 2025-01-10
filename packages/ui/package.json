@@ -7,9 +7,19 @@
   "scripts": {
     "lint": "eslint ."
   },
+  "dependencies": {
+    "@iconify/vue": "catalog:",
+    "@vueuse/components": "catalog:",
+    "@vueuse/core": "catalog:",
+    "naive-ui": "catalog:"
+  },
   "devDependencies": {
+    "@unocss/preset-attributify": "^0.65.4",
+    "@unocss/preset-uno": "^0.65.4",
+    "@unocss/transformer-directives": "^0.65.4",
     "eslint-config-custom": "workspace:*",
     "tsconfig": "workspace:*",
+    "unocss": "catalog:",
     "vue": "catalog:"
   }
 }

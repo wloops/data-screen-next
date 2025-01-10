@@ -1,8 +1,6 @@
 packages:
-  - 'apps/*'
-  - 'packages/*'
-  - '!**/test/**'
-  - '!**/dist/**'
+  - apps/*
+  - packages/*
 
 catalog:
   '@vueuse/core': ^12.3.0
@@ -15,6 +13,8 @@ catalog:
   '@types/node': ^20.11.24
   '@nuxtjs/eslint-config-typescript': ^12.1.0
   '@nuxt/ui': ^2.20.0
+  '@unocss/nuxt': ^0.65.4
+  '@iconify/vue': ^4.3.0
   pinia: ^2.2.2
   vue: ^3.5.13
   vue-router: ^4.5.0
@@ -28,3 +28,5 @@ catalog:
   turbo: ^2.3.3
   nuxt: ^3.15.0
   nuxt-icon: ^0.6.9
+  naive-ui: ^2.41.0
+  unocss: ^0.65.4

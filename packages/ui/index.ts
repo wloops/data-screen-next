@@ -1,5 +1,7 @@
-import Card from "./src/card.vue";
-import Gradient from "./src/gradient.vue";
-import Page from "./src/page.vue";
+export * from './src/dashboard/'
+export { default as Card } from './src/card.vue'
+export { default as Gradient } from './src/gradient.vue'
+export { default as Page } from './src/page.vue'
 
-export { Card, Gradient, Page };
+// 类型
+export * from './src/dashboard/types/layout'
