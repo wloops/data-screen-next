@@ -5,7 +5,8 @@ export interface Page {
   have_tabs?: boolean
   style?: {
     icon?: string
-    color?: string
+    container?: any
+    item?: any
   }
   tabs?: Tab[]
   fecth?: any[]

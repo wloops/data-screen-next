@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import { computed } from 'vue'
 import type { Page } from '../../../types/layout'
 
 interface LayoutItem {
@@ -12,22 +13,35 @@ const props = defineProps<{
   pageConfig: Page
 }>()
 
-const setSpacePercent = (ratio: number, index: number) => {
-  let ratioPlus = 0
-  const direction = props.pageConfig.layoutModel === 'column' ? 'width|height' : 'height|width'
-  if (index === -1) {
-    props.layoutConfig.forEach((item: any) => {
-      ratioPlus += item.flexRatio
-    })
-  } else {
-    props.layoutConfig[index].innerBoxs.forEach((innerBox: any) => {
-      ratioPlus += innerBox.flexRatio
-    })
-  }
+const setDynamicStyle = (type: string, ratio: number = 1, index: number = -1) => {
+  const styleType = type.split('|')[0]
+  const pageStyle = props.pageConfig?.style?.[styleType as keyof typeof props.pageConfig.style]
+  // 拼接pageStyle中的每一项
+  const otherStyle = pageStyle
+    ? Object.entries(pageStyle)
+        .map(([key, value]) => `${key}: ${value}`)
+        .join(';')
+    : ''
 
-  const percent = ((ratio / ratioPlus) * 100).toFixed(2)
-  // console.log('percent::', percent)
-  return index === -1 ? `${direction.split('|')[0]}: ${percent}%` : `${direction.split('|')[1]}: ${percent}%`
+  if (type.indexOf('whPercent') !== -1) {
+    let ratioPlus = 0
+    const direction = props.pageConfig.layoutModel === 'column' ? 'width|height' : 'height|width'
+    if (index === -1) {
+      props.layoutConfig.forEach((item: any) => {
+        ratioPlus += item.flexRatio
+      })
+    } else {
+      props.layoutConfig[index].innerBoxs.forEach((innerBox: any) => {
+        ratioPlus += innerBox.flexRatio
+      })
+    }
+
+    const percent = ((ratio / ratioPlus) * 100).toFixed(2)
+    // console.log('percent::', percent)
+    const whPercent = index === -1 ? `${direction.split('|')[0]}: ${percent}%` : `${direction.split('|')[1]}: ${percent}%`
+    return `${whPercent};${otherStyle}`
+  }
+  return otherStyle
 }
 </script>
 
@@ -42,9 +56,8 @@ const setSpacePercent = (ratio: number, index: number) => {
         }"
         w-full
         h-full
-        pr-3
-        pb-3
         flex
+        :style="setDynamicStyle('container')"
       >
         <div
           v-for="(item, index) in props.layoutConfig"
@@ -55,18 +68,18 @@ const setSpacePercent = (ratio: number, index: number) => {
           flex
           justify-center
           items-center
-          m-5
-          :style="setSpacePercent(item.flexRatio, -1)"
+          m-1
+          :style="setDynamicStyle('item|whPercent', item.flexRatio, -1)"
         >
           <div
             v-for="(innerBox, innerIndex) in item.innerBoxs"
             :key="innerBox.id || `${index}-${innerIndex}`"
-            :style="setSpacePercent(innerBox.flexRatio, index)"
+            :style="setDynamicStyle('item|whPercent', innerBox.flexRatio, index)"
             class="innerBox"
             :value="innerBox.id"
             w-full
             h-full
-            m-5
+            m-1
           >
             <div :class="!innerBox.name ? 'innerBox-content-notTitle' : 'innerBox-content'" w-full h-full :data-text="innerBox.name">
               <AppBlocks :key="innerBox.id" :id="innerBox.id" :style="`height: ${!innerBox.name ? '100%' : 'calc(100% - 40px)'};`" :data="innerBox"> </AppBlocks>
