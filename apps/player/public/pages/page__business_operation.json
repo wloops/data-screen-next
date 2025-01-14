@@ -7,6 +7,12 @@
             {
                 "id": "block-id-3710bd8d-308d-431c-90b9-eda69b97fa60",
                 "name": "第1列区块1",
+                "style": {
+                    "title": {
+                        "justify-content": "flex-start",
+                        "color": "#79B8FF"
+                    }
+                },
                 "flexRatio": 1,
                 "direction": "column",
                 "children": [

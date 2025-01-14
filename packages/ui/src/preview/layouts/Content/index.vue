@@ -1,5 +1,4 @@
 <script setup lang="ts">
-import { computed } from 'vue'
 import type { Page } from '../../../types/layout'
 
 interface LayoutItem {
@@ -43,6 +42,11 @@ const setDynamicStyle = (type: string, ratio: number = 1, index: number = -1) =>
   }
   return otherStyle
 }
+
+const setInnerBoxsStyle = (innerBox: any, type: string = 'title') => {
+  const style = innerBox.style?.[type]
+  return style
+}
 </script>
 
 <template>
@@ -81,8 +85,11 @@ const setDynamicStyle = (type: string, ratio: number = 1, index: number = -1) =>
             h-full
             m-1
           >
-            <div :class="!innerBox.name ? 'innerBox-content-notTitle' : 'innerBox-content'" w-full h-full :data-text="innerBox.name">
-              <AppBlocks :key="innerBox.id" :id="innerBox.id" :style="`height: ${!innerBox.name ? '100%' : 'calc(100% - 40px)'};`" :data="innerBox"> </AppBlocks>
+            <div :class="!innerBox.name ? 'innerBox-content-notTitle' : 'innerBox-content'" w-full h-full>
+              <div v-if="innerBox.name" class="innerBox-title" :style="setInnerBoxsStyle(innerBox, 'title')">
+                {{ innerBox.name }}
+              </div>
+              <AppBlocks :key="innerBox.id" :id="innerBox.id" :style="`height: ${!innerBox.name ? '100%' : 'calc(100% - 40px)'};`" :data="innerBox" />
             </div>
           </div>
         </div>
@@ -129,10 +136,10 @@ const setDynamicStyle = (type: string, ratio: number = 1, index: number = -1) =>
   background: transparent;
   box-shadow: 0 25px 25px rgba(0, 0, 0, 0.15);
   border: 2px dashed rgba(64, 121, 226, 0.35);
-
   display: flex;
-  justify-content: center;
-  align-items: end;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
   transition: 0.5s;
   border-radius: 10px;
   padding-bottom: 5px;
@@ -163,10 +170,7 @@ const setDynamicStyle = (type: string, ratio: number = 1, index: number = -1) =>
   }
 }
 
-.innerBox-content::before {
-  content: attr(data-text);
-  position: absolute;
-  top: 0;
+.innerBox-title {
   width: 100%;
   height: 40px;
   line-height: 40px;
