@@ -70,7 +70,7 @@
           "gap": "10px"
         }
       },
-       "fecth": [
+      "fecth": [
         {
           "remark": "获取子集",
           "hand": "get_children",
@@ -103,6 +103,10 @@
       "style": {
         "icon": "solar:chart-2-bold-duotone",
         "container": {
+          "gap": "10px",
+          "padding": "10px"
+        },
+        "item": {
           "gap": "10px"
         }
       },
@@ -121,4 +125,3 @@
     }
   ]
 }
-

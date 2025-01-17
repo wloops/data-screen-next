@@ -1,0 +1,249 @@
+[
+  {
+    "name": "column-1",
+    "direction": "column",
+    "flexRatio": 2,
+    "innerBoxs": [
+      {
+        "id": "block-id-585d0fb7-ce24-4576-81fb-ab1d74b28dd6",
+        "name": "平台信息",
+        "flexRatio": 2.05,
+        "direction": "row",
+        "children": [
+          {
+            "id": "block-id-585d0fb7-ce24-4576-81fb-ab1d74b28dd6-1",
+            "fatherID": "block-id-585d0fb7-ce24-4576-81fb-ab1d74b28dd6",
+            "type": "infos",
+            "flexRatio": 2,
+            "heightRatio": 0.6,
+            "remote": {
+              "mode": "ws",
+              "params": [
+                {
+                  "wsId": "nodeInfo",
+                  "groupId": "NODE01",
+                  "itemId": "nodeInfo"
+                },
+                {
+                  "wsId": "nodeInfo",
+                  "groupId": "NODE01",
+                  "itemId": "statusInfo"
+                }
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "id": "block-id-0853cad4-3ea9-4445-a1f5-d53ec76a3fd7",
+        "name": "系统异常信息",
+        "flexRatio": 1,
+        "direction": "column",
+        "children": [
+          {
+            "id": "block-id-0853cad4-3ea9-4445-a1f5-d53ec76a3fd7-1",
+            "fatherID": "block-id-0853cad4-3ea9-4445-a1f5-d53ec76a3fd7",
+            "type": "table",
+            "flexRatio": 1,
+            "remote": {
+              "mode": "ws",
+              "params": [
+                {
+                  "wsId": "errorInfo",
+                  "groupId": "NODE01",
+                  "itemId": "errorInfo"
+                }
+              ]
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "name": "column-2",
+    "direction": "column",
+    "flexRatio": 3,
+    "innerBoxs": [
+      {
+        "id": "block-id-792ff532-d98d-4a06-bf99-7d2b43451d06",
+        "name": "",
+        "flexRatio": 1,
+        "direction": "row",
+        "children": [
+          {
+            "id": "block-id-792ff532-d98d-4a06-bf99-7d2b43451d06-1",
+            "fatherID": "block-id-792ff532-d98d-4a06-bf99-7d2b43451d06",
+            "type": "countNumber",
+            "flexRatio": 1,
+            "remote": {
+              "mode": "ws",
+              "params": [
+                {
+                  "wsId": "TsscTodayBusiness",
+                  "groupId": "NODE01",
+                  "itemId": "TsscTodayBusiness"
+                }
+              ]
+            },
+            "other": {
+              "unit": "笔",
+              "items": [
+                {
+                  "name": "今日交易笔数"
+                },
+                {
+                  "name": "交易成功"
+                },
+                {
+                  "name": "交易失败"
+                }
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "id": "block-id-28f05d8b-40ab-47af-af67-3400487d4539",
+        "name": "交易详情",
+        "flexRatio": 1,
+        "direction": "column",
+        "children": [
+          {
+            "id": "block-id-28f05d8b-40ab-47af-af67-3400487d4539-chart-1",
+            "fatherID": "block-id-28f05d8b-40ab-47af-af67-3400487d4539",
+            "type": "chart|bar",
+            "chartID": "default-bar-1",
+            "flexRatio": 3,
+            "remote": {
+              "mode": "ws",
+              "params": [
+                {
+                  "wsId": "Node7DayBusiness",
+                  "groupId": "NODE01",
+                  "itemId": "Node7DayBusiness"
+                }
+              ]
+            },
+            "other": {
+              "legendData": ["成功笔数", "失败笔数", "成功趋势"],
+              "yAxisData": {
+                "leftName": "交易次数",
+                "rightName": "百分比(%)"
+              }
+            }
+          }
+        ]
+      },
+      {
+        "id": "block-id-26ffe222-1310-488e-bdec-f3d6b69e4ab8",
+        "name": "TPS实时趋势",
+        "flexRatio": 1,
+        "direction": "column",
+        "children": [
+          {
+            "id": "block-id-26ffe222-1310-488e-bdec-f3d6b69e4ab8-1",
+            "fatherID": "block-id-26ffe222-1310-488e-bdec-f3d6b69e4ab8",
+            "type": "chart|line",
+            "flexRatio": 5,
+            "remote": {
+              "mode": "ws",
+              "params": [
+                {
+                  "wsId": "tpsTrend",
+                  "groupId": "NODE01",
+                  "itemId": "tpsTrend"
+                }
+              ]
+            }
+          },
+          {
+            "id": "block-id-26ffe222-1310-488e-bdec-f3d6b69e4ab8-2",
+            "fatherID": "block-id-26ffe222-1310-488e-bdec-f3d6b69e4ab8",
+            "type": "statistic",
+            "flexRatio": 1,
+            "remote": {
+              "mode": "ws",
+              "params": [
+                {
+                  "wsId": "RealTimeBusiness",
+                  "groupId": "NODE01",
+                  "itemId": "RealTimeBusiness"
+                }
+              ]
+            },
+            "other": {
+              "unit": "ms",
+              "items": [
+                {
+                  "name": "平均响应时间",
+                  "key": "avgTime"
+                },
+                {
+                  "name": "最大响应时间",
+                  "key": "maxTime"
+                }
+              ]
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "name": "column-3",
+    "direction": "column",
+    "flexRatio": 2,
+    "innerBoxs": [
+      {
+        "id": "block-id-a30c7a85-6905-4757-8ddc-4574a3c5cf5c",
+        "name": "节点可达",
+        "flexRatio": 2.05,
+        "direction": "column",
+        "children": [
+          {
+            "id": "block-id-a30c7a85-6905-4757-8ddc-4574a3c5cf5c-1",
+            "fatherID": "block-id-a30c7a85-6905-4757-8ddc-4574a3c5cf5c",
+            "type": "chart|graph",
+            "chartID": "default-graph-1",
+            "flexRatio": 1,
+            "remote": {
+              "mode": "ws",
+              "params": [
+                {
+                  "wsId": "nodeAchievable",
+                  "groupId": "NODE01",
+                  "itemId": "nodeAchievable"
+                }
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "id": "block-id-7f8ac551-3dde-42a5-a836-383342df5eaa",
+        "name": "平台告警信息",
+        "flexRatio": 1,
+        "direction": "column",
+        "children": [
+          {
+            "id": "block-id-7f8ac551-3dde-42a5-a836-383342df5eaa-1",
+            "fatherID": "block-id-7f8ac551-3dde-42a5-a836-383342df5eaa",
+            "type": "table",
+            "flexRatio": 1,
+            "remote": {
+              "mode": "ws",
+              "params": [
+                {
+                  "wsId": "NodeAlarmDetail2",
+                  "groupId": "NODE01",
+                  "itemId": "NodeAlarmDetail"
+                }
+              ]
+            }
+          }
+        ]
+      }
+    ]
+  }
+]

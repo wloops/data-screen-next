@@ -68,6 +68,7 @@ onMounted(async () => {
       blockTabs[component.__name] = component
     }
   }
+  console.log('blockTabs::', blockTabs)
 
   isApply.value = false
   props.data.children?.forEach((item) => {

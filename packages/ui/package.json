@@ -9,9 +9,15 @@
   },
   "dependencies": {
     "@iconify/vue": "catalog:",
+    "@types/echarts": "^5.0.0",
+    "@types/lodash-es": "^4.17.12",
     "@vueuse/components": "catalog:",
     "@vueuse/core": "catalog:",
-    "naive-ui": "catalog:"
+    "dayjs": "^1.11.13",
+    "echarts": "^5.6.0",
+    "lodash-es": "^4.17.21",
+    "naive-ui": "catalog:",
+    "vue3-marquee": "^4.2.2"
   },
   "devDependencies": {
     "@unocss/preset-attributify": "^0.65.4",
