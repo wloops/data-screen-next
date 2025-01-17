@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import type { Page } from '../../../types/layout'
+import AppBlocks from '../../app-blocks/index.vue'
 
 interface LayoutItem {
   id?: string

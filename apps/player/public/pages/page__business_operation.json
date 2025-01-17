@@ -1,94 +1,105 @@
 [
-    {
-        "name": "column-1",
-        "direction": "column",
+  {
+    "name": "column-1",
+    "direction": "column",
+    "flexRatio": 1,
+    "innerBoxs": [
+      {
+        "id": "block-id-3710bd8d-308d-431c-90b9-eda69b97fa60",
+        "name": "第1列区块1",
+        "style": {
+          "title": {
+            "justify-content": "flex-start",
+            "color": "#79B8FF"
+          }
+        },
         "flexRatio": 1,
-        "innerBoxs": [
-            {
-                "id": "block-id-3710bd8d-308d-431c-90b9-eda69b97fa60",
-                "name": "第1列区块1",
-                "style": {
-                    "title": {
-                        "justify-content": "flex-start",
-                        "color": "#79B8FF"
-                    }
-                },
-                "flexRatio": 1,
-                "direction": "column",
-                "children": [
-                    {
-                        "id": "block-child-id-feca1a81-4ad8-436e-95d3-d2363d4a2f3a",
-                        "fatherID": "block-id-3710bd8d-308d-431c-90b9-eda69b97fa60",
-                        "flexRatio": 1
-                    }
-                ]
-            },
-            {
-                "id": "block-id-790ef937-0bc5-433a-a29f-41f725b78337",
-                "name": "第1列区块2",
-                "flexRatio": 1,
-                "direction": "column",
-                "children": [
-                    {
-                        "id": "block-child-id-2c77abc7-a60c-4f16-8ccd-695cfac38feb",
-                        "fatherID": "block-id-790ef937-0bc5-433a-a29f-41f725b78337",
-                        "flexRatio": 1
-                    }
-                ]
-            }
-        ]
-    },
-    {
-        "name": "column-2",
         "direction": "column",
-        "flexRatio": 2,
-        "innerBoxs": [
-            {
-                "id": "block-id-cb220c9b-5aac-49de-8821-905560db722b",
-                "name": "第2列区块1",
-                "flexRatio": 1,
-                "direction": "column",
-                "children": [
-                    {
-                        "id": "block-child-id-0bc00b17-c745-403c-852f-db8ef5491eb6",
-                        "fatherID": "block-id-cb220c9b-5aac-49de-8821-905560db722b",
-                        "flexRatio": 1
-                    }
-                ]
+        "children": [
+          {
+            "id": "block-child-id-feca1a81-4ad8-436e-95d3-d2363d4a2f3a",
+            "fatherID": "block-id-3710bd8d-308d-431c-90b9-eda69b97fa60",
+            "flexRatio": 1,
+            "type": "statistic",
+            "remote": {
+              "mode": "ws",
+              "params": [
+                {
+                  "wsId": "RealTimeBusiness",
+                  "groupId": "NODE01",
+                  "itemId": "RealTimeBusiness"
+                }
+              ]
             }
+          }
         ]
-    },
-    {
-        "name": "column-3",
-        "direction": "column",
+      },
+      {
+        "id": "block-id-790ef937-0bc5-433a-a29f-41f725b78337",
+        "name": "第1列区块2",
         "flexRatio": 1,
-        "innerBoxs": [
-            {
-                "id": "block-id-feb6a427-7d90-4edc-b539-f4c0dd75fd21",
-                "name": "第3列区块1",
-                "flexRatio": 1,
-                "direction": "column",
-                "children": [
-                    {
-                        "id": "block-child-id-78f81300-d9a8-4ffb-8d7f-021684168ec6",
-                        "fatherID": "block-id-feb6a427-7d90-4edc-b539-f4c0dd75fd21",
-                        "flexRatio": 1
-                    }
-                ]
-            },
-            {
-                "id": "block-id-43aae7da-ae04-4fb9-b062-721de2a30422",
-                "name": "第3列区块2",
-                "flexRatio": 1,
-                "direction": "column",
-                "children": [
-                    {
-                        "id": "block-child-id-31a96511-9ba0-47fe-8c6a-cba24d418a1a",
-                        "fatherID": "block-id-43aae7da-ae04-4fb9-b062-721de2a30422",
-                        "flexRatio": 1
-                    }
-                ]
-            }
+        "direction": "column",
+        "children": [
+          {
+            "id": "block-child-id-2c77abc7-a60c-4f16-8ccd-695cfac38feb",
+            "fatherID": "block-id-790ef937-0bc5-433a-a29f-41f725b78337",
+            "flexRatio": 1
+          }
         ]
-    }
+      }
+    ]
+  },
+  {
+    "name": "column-2",
+    "direction": "column",
+    "flexRatio": 2,
+    "innerBoxs": [
+      {
+        "id": "block-id-cb220c9b-5aac-49de-8821-905560db722b",
+        "name": "第2列区块1",
+        "flexRatio": 1,
+        "direction": "column",
+        "children": [
+          {
+            "id": "block-child-id-0bc00b17-c745-403c-852f-db8ef5491eb6",
+            "fatherID": "block-id-cb220c9b-5aac-49de-8821-905560db722b",
+            "flexRatio": 1
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "name": "column-3",
+    "direction": "column",
+    "flexRatio": 1,
+    "innerBoxs": [
+      {
+        "id": "block-id-feb6a427-7d90-4edc-b539-f4c0dd75fd21",
+        "name": "第3列区块1",
+        "flexRatio": 1,
+        "direction": "column",
+        "children": [
+          {
+            "id": "block-child-id-78f81300-d9a8-4ffb-8d7f-021684168ec6",
+            "fatherID": "block-id-feb6a427-7d90-4edc-b539-f4c0dd75fd21",
+            "flexRatio": 1
+          }
+        ]
+      },
+      {
+        "id": "block-id-43aae7da-ae04-4fb9-b062-721de2a30422",
+        "name": "第3列区块2",
+        "flexRatio": 1,
+        "direction": "column",
+        "children": [
+          {
+            "id": "block-child-id-31a96511-9ba0-47fe-8c6a-cba24d418a1a",
+            "fatherID": "block-id-43aae7da-ae04-4fb9-b062-721de2a30422",
+            "flexRatio": 1
+          }
+        ]
+      }
+    ]
+  }
 ]
