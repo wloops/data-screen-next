@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { ref, reactive, onMounted, markRaw } from 'vue'
 import { useWebSocket } from '@vueuse/core'
+import { useProceResponseData } from '../../hooks/useProceResponseData'
 
 interface BlockItem {
   id: string
@@ -95,7 +96,7 @@ function handleMessage(e: string) {
     item.remote?.params.forEach((param) => {
       if (param.groupId === message.groupId && param.itemId === message.itemId) {
         // TODO: 实现 useProceResponseData 或从其他地方导入
-        const newdata = {} // useProceResponseData(param.wsId, message.data)
+        const newdata = useProceResponseData(param.wsId, message.data)
         componentData.value[item.id] = { ...componentData.value[item.id], ...newdata }
       }
     })

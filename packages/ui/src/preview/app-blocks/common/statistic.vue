@@ -1,10 +1,10 @@
-<script setup>
+<script setup lang="ts">
+import { ref } from 'vue'
 import { NStatistic, NNumberAnimation } from 'naive-ui'
 
 const props = defineProps(['config', 'data'])
-console.log('RealTimeBusiness111 data: ', props.data)
 
-const demoData = ref({
+const demoData = ref<any>({
   avgTime: 100,
   maxTime: 200,
 })
@@ -24,8 +24,8 @@ const demoConfig = ref({
   },
 })
 // 实际数据
-const data = ref(demoData.value)
-const config = ref(demoConfig.value)
+const data = ref<any>(demoData.value)
+const config = ref<any>(demoConfig.value)
 // props 有值
 if (props.data && props.config) {
   data.value = props.data
@@ -37,7 +37,7 @@ if (props.data && props.config) {
   <div flex justify-center items-center flex-col>
     <template v-for="item in config.other.items">
       <n-statistic :label="item.name" tabular-nums mr-10>
-        <n-number-animation :from="0" :to="(data && data[item.key]) || 0" :active="true" :precision="2" locale="en-US" show-separator />
+        <n-number-animation :from="0" :to="(data && data[item.key as keyof typeof data]) || 0" :active="true" :precision="2" locale="en-US" show-separator />
         <template #suffix>{{ config.other.unit || '' }}</template>
       </n-statistic>
     </template>
