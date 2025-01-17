@@ -25,12 +25,12 @@ watch(
   { immediate: true }
 )
 
-const base_url = props.layoutConfig?.fecth?.base_url?.ws
-console.log('base_url', base_url)
+const baseUrlWs = props.layoutConfig?.fecth?.base_url?.ws
+localStorage.setItem('baseUrlWs', baseUrlWs)
 
 if (props.fetch && props.fetch.length > 0) {
   props.fetch.forEach((item: any) => {
-    const { data, status, send, close } = useWebSocket(base_url, {
+    const { data, status, send, close } = useWebSocket(baseUrlWs, {
       autoReconnect: true,
       onMessage: (ws, event) => {
         const message = JSON.parse(event.data)
